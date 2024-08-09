@@ -19,12 +19,13 @@ namespace service
 
             try
             {
-                data.setQuery("select Codigo, Nombre, A.Descripcion Descripcion, M.Descripcion Marca, C.Descripcion Categoria, ImagenUrl, Precio from ARTICULOS A, MARCAS M, CATEGORIAS C Where M.Id = A.IdMarca And C.Id = A.IdCategoria");
+                data.setQuery("select Codigo, Nombre, A.Descripcion Descripcion, M.Descripcion Marca, C.Descripcion Categoria, ImagenUrl, Precio, A.Id from ARTICULOS A, MARCAS M, CATEGORIAS C Where M.Id = A.IdMarca And C.Id = A.IdCategoria");
                 data.runReader();
 
                 while (data.Reader.Read())
                 {
                     Item aux = new Item();
+                    aux.Id = (int)data.Reader["Id"];
                     aux.Code = (string)data.Reader["Codigo"];
                     aux.Name = (string)data.Reader["Nombre"];
                     aux.Description = (string)data.Reader["Descripcion"];
@@ -39,6 +40,57 @@ namespace service
                     list.Add(aux);
                 }
                 return list;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                data.closeConnection();
+            }
+        }
+        public void add(Item newone)
+        {
+            DataAccess data = new DataAccess();
+            try
+            {
+                data.setQuery("insert into ARTICULOS (Codigo, Nombre, Descripcion, IdMarca, IdCategoria, ImagenUrl, Precio) values (@Codigo, @Nombre, @Descripcion, @IdMarca, @IdCategoria, @ImagenUrl, @Precio)");
+                data.setParameter("@Codigo", newone.Code);
+                data.setParameter("@Nombre", newone.Name);
+                data.setParameter("@Descripcion", newone.Description);
+                data.setParameter("@IdMarca", newone.Brand.Id);
+                data.setParameter("@IdCategoria", newone.Category.Id);
+                data.setParameter("@ImagenUrl", newone.UrlImage);
+                data.setParameter("@Precio", newone.Price);
+
+                data.runAction();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                data.closeConnection();
+            }            
+        }
+        public void modify(Item edited)
+        {
+            DataAccess data = new DataAccess();
+            try
+            {
+                data.setQuery("update ARTICULOS set Codigo = @Codigo, Nombre = @Nombre, Descripcion = @Descripcion, IdMarca = @IdMarca, IdCategoria = @IdCategoria, ImagenUrl = @ImagenUrl, Precio = @Precio Where id = @id");
+                data.setParameter("@Codigo", edited.Code);
+                data.setParameter("@Nombre", edited.Name);
+                data.setParameter("@Descripcion", edited.Description);
+                data.setParameter("@IdMarca", edited.Brand.Id);
+                data.setParameter("@IdCategoria", edited.Category.Id);
+                data.setParameter("@ImagenUrl", edited.UrlImage);
+                data.setParameter("@Precio", edited.Price);
+                data.setParameter("@id", edited.Id);
+
+                data.runAction();
             }
             catch (Exception ex)
             {

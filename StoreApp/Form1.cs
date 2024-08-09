@@ -42,6 +42,7 @@ namespace StoreApp
         }
         private void hidenColumns()
         {
+            dgvStore.Columns["Id"].Visible = false;
             dgvStore.Columns["UrlImage"].Visible = false;
             dgvStore.Columns["Description"].Visible = false;
             dgvStore.Columns["Brand"].Visible = false;
@@ -73,6 +74,22 @@ namespace StoreApp
             Item selected = (Item)dgvStore.CurrentRow.DataBoundItem;
             loadImage(selected.UrlImage);
 
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            NewItem register = new NewItem();
+            register.ShowDialog();
+            load();
+        }
+
+        private void btnModify_Click(object sender, EventArgs e)
+        {
+            Item selected;
+            selected = (Item)dgvStore.CurrentRow.DataBoundItem;
+            NewItem modify = new NewItem(selected);
+            modify.ShowDialog();
+            load();
         }
     }
 }
