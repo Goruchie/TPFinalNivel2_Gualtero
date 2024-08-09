@@ -26,6 +26,10 @@ namespace StoreApp
             {
                 itemList = service.list();
                 dgvStore.DataSource = itemList;
+                dgvStore.Columns["UrlImage"].Visible = false;
+                dgvStore.Columns["Description"].Visible = false;
+                dgvStore.Columns["Brand"].Visible = false;
+                dgvStore.Columns["Category"].Visible = false;
             }
             catch (Exception ex)
             {

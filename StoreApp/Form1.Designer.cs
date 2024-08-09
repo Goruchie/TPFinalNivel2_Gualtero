@@ -34,6 +34,7 @@
             // 
             // dgvStore
             // 
+            this.dgvStore.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvStore.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvStore.Location = new System.Drawing.Point(24, 53);
             this.dgvStore.Name = "dgvStore";

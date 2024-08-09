@@ -32,7 +32,8 @@ namespace service
                     aux.Brand.Description = (string)data.Reader["Marca"];
                     aux.Category = new Category();
                     aux.Category.Description = (string)data.Reader["Categoria"];
-                    aux.UrlImage = (string)data.Reader["ImagenUrl"];
+                    if (!(data.Reader["ImagenUrl"] is DBNull))
+                        aux.UrlImage = (string)data.Reader["ImagenUrl"];                    
                     aux.Price = data.Reader["Precio"] != DBNull.Value ? Convert.ToInt32((decimal)data.Reader["Precio"]) : 0;
 
                     list.Add(aux);
