@@ -7,14 +7,39 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using domain;
+using service;
 
 namespace StoreApp
 {
-    public partial class Form1 : Form
+    public partial class frmStore : Form
     {
-        public Form1()
+        private List<Item> itemList;
+        public frmStore()
         {
             InitializeComponent();
+        }
+        private void load()
+        {
+            StoreServices service = new StoreServices();
+            try
+            {
+                itemList = service.list();
+                dgvStore.DataSource = itemList;
+                dgvStore.Columns["UrlImage"].Visible = false;
+                dgvStore.Columns["Description"].Visible = false;
+                dgvStore.Columns["Brand"].Visible = false;
+                dgvStore.Columns["Category"].Visible = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void frmStore_Load(object sender, EventArgs e)
+        {
+            load();
         }
     }
 }
