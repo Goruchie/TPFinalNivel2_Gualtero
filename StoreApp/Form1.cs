@@ -39,6 +39,9 @@ namespace StoreApp
         private void frmStore_Load(object sender, EventArgs e)
         {
             load();
+            cboFilterBy.Items.Add("Code");
+            cboFilterBy.Items.Add("Name");
+            cboFilterBy.Items.Add("Price");
         }
         private void hidenColumns()
         {
@@ -120,6 +123,42 @@ namespace StoreApp
             Details details = new Details(selected);
             details.ShowDialog();
             load();
+        }
+
+        private void cboFilterBy_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string option = cboFilterBy.SelectedItem.ToString();
+            if (option == "Price")
+            {
+                cboCriteria.Items.Clear();
+                cboCriteria.Items.Add("Less than");
+                cboCriteria.Items.Add("Greater than");
+                cboCriteria.Items.Add("Equal to");
+            }
+            else
+            {
+                cboCriteria.Items.Clear();
+                cboCriteria.Items.Add("Contains");
+                cboCriteria.Items.Add("Starts with");
+                cboCriteria.Items.Add("Ends with");
+            }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            StoreServices service = new StoreServices();
+            try
+            {
+                
+                string filterBy = cboFilterBy.SelectedItem.ToString();
+                string criteria = cboCriteria.SelectedItem.ToString();
+                string search = txtSearch.Text;
+                dgvStore.DataSource = service.filter(filterBy, criteria, search);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
     }
 }

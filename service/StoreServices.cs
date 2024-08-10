@@ -117,5 +117,90 @@ namespace service
                 throw ex;
             }         
         }
+        public List<Item> filter(string filterBy, string criteria, string search)
+        {
+            List<Item> list = new List<Item>();
+            DataAccess data = new DataAccess();
+            try
+            {
+                string query = "select Codigo, Nombre, A.Descripcion Descripcion, M.Descripcion Marca, C.Descripcion Categoria, ImagenUrl, Precio, A.Id, A.IdMarca, A.IdCategoria from ARTICULOS A, MARCAS M, CATEGORIAS C Where M.Id = A.IdMarca And C.Id = A.IdCategoria And ";
+                switch (filterBy)
+                {
+                    case "Price":
+                        switch (criteria)
+                        {
+                            case "Bigger than":
+                                query += "Precio > " + search;
+                                break;
+                            case "Less than":
+                                query += "Precio < " + search;
+                                break;
+                            default:
+                                query += "Precio = " + search;
+                                break;                        
+                        }
+                        break;
+
+                    case "Code":
+                        switch(criteria)
+                        {
+                            case "Starts with":
+                                query += "Codigo like '" + search + "%' ";
+                                break;
+                            case "Ends with":
+                                query += "Codigo like '%" + search + "'";
+                                break;
+                            default:
+                                query += "Codigo like '%" + search + "%'";
+                                break;
+                        }
+                        break;
+
+                    case "Name":
+                        switch (criteria)
+                        {
+                            case "Starts with":
+                                query += "Nombre like '" + search + "%' ";
+                                break;
+                            case "Ends with":
+                                query += "Nombre like '%" + search + "'";
+                                break;
+                            default:
+                                query += "Nombre like '%" + search + "%'";
+                                break;
+                        }
+                        break;
+
+                    default:
+                        break;
+                }
+                data.setQuery(query);
+                data.runReader();
+                while (data.Reader.Read())
+                                    {
+                    Item aux = new Item();
+                    aux.Id = (int)data.Reader["Id"];
+                    aux.Code = (string)data.Reader["Codigo"];
+                    aux.Name = (string)data.Reader["Nombre"];
+                    aux.Description = (string)data.Reader["Descripcion"];
+                    aux.Brand = new Brand();
+                    aux.Brand.Id = (int)data.Reader["IdMarca"];
+                    aux.Brand.Description = (string)data.Reader["Marca"];
+                    aux.Category = new Category();
+                    aux.Category.Id = (int)data.Reader["IdCategoria"];
+                    aux.Category.Description = (string)data.Reader["Categoria"];
+                    if (!(data.Reader["ImagenUrl"] is DBNull))
+                        aux.UrlImage = (string)data.Reader["ImagenUrl"];
+                    aux.Price = data.Reader["Precio"] != DBNull.Value ? Convert.ToInt32((decimal)data.Reader["Precio"]) : 0;
+
+                    list.Add(aux);
+                }
+            return list;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }
