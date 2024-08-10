@@ -19,7 +19,7 @@ namespace service
 
             try
             {
-                data.setQuery("select Codigo, Nombre, A.Descripcion Descripcion, M.Descripcion Marca, C.Descripcion Categoria, ImagenUrl, Precio, A.Id from ARTICULOS A, MARCAS M, CATEGORIAS C Where M.Id = A.IdMarca And C.Id = A.IdCategoria");
+                data.setQuery("select Codigo, Nombre, A.Descripcion Descripcion, M.Descripcion Marca, C.Descripcion Categoria, ImagenUrl, Precio, A.Id, A.IdMarca, A.IdCategoria from ARTICULOS A, MARCAS M, CATEGORIAS C Where M.Id = A.IdMarca And C.Id = A.IdCategoria");
                 data.runReader();
 
                 while (data.Reader.Read())
@@ -30,8 +30,10 @@ namespace service
                     aux.Name = (string)data.Reader["Nombre"];
                     aux.Description = (string)data.Reader["Descripcion"];
                     aux.Brand = new Brand();
+                    aux.Brand.Id = (int)data.Reader["IdMarca"];
                     aux.Brand.Description = (string)data.Reader["Marca"];
                     aux.Category = new Category();
+                    aux.Category.Id = (int)data.Reader["IdCategoria"];
                     aux.Category.Description = (string)data.Reader["Categoria"];
                     if (!(data.Reader["ImagenUrl"] is DBNull))
                         aux.UrlImage = (string)data.Reader["ImagenUrl"];                    
