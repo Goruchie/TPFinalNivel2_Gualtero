@@ -33,6 +33,7 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnModify = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.btbDetails = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStore)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxItem)).BeginInit();
             this.SuspendLayout();
@@ -47,18 +48,18 @@
             this.dgvStore.ReadOnly = true;
             this.dgvStore.RowTemplate.Height = 50;
             this.dgvStore.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvStore.Size = new System.Drawing.Size(525, 300);
+            this.dgvStore.Size = new System.Drawing.Size(639, 300);
             this.dgvStore.TabIndex = 0;
             this.dgvStore.SelectionChanged += new System.EventHandler(this.dgvStore_SelectionChanged);
             // 
             // pbxItem
             // 
             this.pbxItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pbxItem.Location = new System.Drawing.Point(559, 30);
-            this.pbxItem.MaximumSize = new System.Drawing.Size(229, 300);
+            this.pbxItem.Location = new System.Drawing.Point(657, 30);
+            this.pbxItem.MaximumSize = new System.Drawing.Size(250, 300);
             this.pbxItem.MinimumSize = new System.Drawing.Size(229, 300);
             this.pbxItem.Name = "pbxItem";
-            this.pbxItem.Size = new System.Drawing.Size(229, 300);
+            this.pbxItem.Size = new System.Drawing.Size(250, 300);
             this.pbxItem.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pbxItem.TabIndex = 1;
             this.pbxItem.TabStop = false;
@@ -93,12 +94,23 @@
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
+            // btbDetails
+            // 
+            this.btbDetails.Location = new System.Drawing.Point(256, 336);
+            this.btbDetails.Name = "btbDetails";
+            this.btbDetails.Size = new System.Drawing.Size(75, 23);
+            this.btbDetails.TabIndex = 5;
+            this.btbDetails.Text = "Details";
+            this.btbDetails.UseVisualStyleBackColor = true;
+            this.btbDetails.Click += new System.EventHandler(this.btbDetails_Click);
+            // 
             // frmStore
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(919, 450);
+            this.Controls.Add(this.btbDetails);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnModify);
             this.Controls.Add(this.btnAdd);
@@ -121,6 +133,7 @@
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnModify;
         private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btbDetails;
     }
 }
 

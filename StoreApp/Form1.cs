@@ -53,7 +53,7 @@ namespace StoreApp
             try
             {
                 pbxItem.Load(image);
-                if (pbxItem.Image.Width > 229 & pbxItem.Image.Height > 300)
+                if (pbxItem.Image.Width > 250 & pbxItem.Image.Height > 300)
                     {
                     pbxItem.SizeMode = PictureBoxSizeMode.StretchImage;
                 }
@@ -112,6 +112,14 @@ namespace StoreApp
                 throw;
             }
         }
-        
+
+        private void btbDetails_Click(object sender, EventArgs e)
+        {
+            Item selected;
+            selected = (Item)dgvStore.CurrentRow.DataBoundItem;
+            Details details = new Details(selected);
+            details.ShowDialog();
+            load();
+        }
     }
 }
