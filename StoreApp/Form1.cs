@@ -91,5 +91,27 @@ namespace StoreApp
             modify.ShowDialog();
             load();
         }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            StoreServices service = new StoreServices();
+            Item selected;
+            try
+            {
+                DialogResult answer = MessageBox.Show("Are you sure you want to delete this item?", "Deleted", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (answer == DialogResult.Yes)
+                {
+                selected = (Item)dgvStore.CurrentRow.DataBoundItem;
+                service.delete(selected.Id);
+                load();
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        
     }
 }
