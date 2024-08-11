@@ -144,12 +144,52 @@ namespace StoreApp
             }
         }
 
+        private bool onlyNumbers(string chain)
+        {
+            foreach (char character in chain)
+            {
+                if (!(char.IsNumber(character)))                
+                    return false;
+                
+            }
+            return false;
+        }
+
+        private bool validateFilter()
+        {
+            if (cboFilterBy.SelectedIndex < 0)
+            {
+                MessageBox.Show("You must select a filter option.");
+                return true;
+            }
+            if (cboCriteria.SelectedIndex < 0)
+            {
+                MessageBox.Show("You must select a criteria option.");
+                return true;
+            }
+            if (cboFilterBy.SelectedItem.ToString() == "Price")
+            {
+                if (txtSearch.Text == "")
+                {
+                    MessageBox.Show("You must enter a number to filter.");
+                    return true;
+                }
+                if (!onlyNumbers(txtSearch.Text))
+                {
+                    MessageBox.Show("You must enter numbers for this field.");                    
+                }
+                return true;
+            }
+            return false;
+        }
+
         private void btnSearch_Click(object sender, EventArgs e)
         {
             StoreServices service = new StoreServices();
             try
             {
-                
+                if (validateFilter())
+                    return;
                 string filterBy = cboFilterBy.SelectedItem.ToString();
                 string criteria = cboCriteria.SelectedItem.ToString();
                 string search = txtSearch.Text;
