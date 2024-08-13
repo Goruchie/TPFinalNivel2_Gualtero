@@ -72,8 +72,8 @@ GO
 insert into MARCAS values ('Samsung'), ('Apple'), ('Sony'), ('Huawei'), ('Motorola')
 insert into CATEGORIAS values ('Celphones'),('Televisions'), ('Media'), ('Audio')
 insert into ARTICULOS values ('S01', 'Galaxy S10', 'This thin and light phone is powered by the powerful Snapdragon 855/Exynos 9820 chips and has heaps of memory for your multitasking needs.', 1, 1, 'https://images.samsung.com/is/image/samsung/assets/ar/p6_gro2/p6_initial_mktpd/smartphones/galaxy-s10/specs/galaxy-s10-plus_specs_design_colors_prism_black.jpg?$163_346_PNG$', 69.999),
-('M03', 'Moto G7 Play', 'The Motorola Moto G7 Play is a budget-friendly phone with a 5.7" HD+ display, Snapdragon 632, 13MP rear camera, and 3000mAh battery.', 5, 1, 'https://www.motorola.cl/arquivos/moto-g7-play-img-product.png?v=636862863804700000', 15699),
+('M03', 'Moto G7 Play', 'The Motorola Moto G7 Play is a budget-friendly phone with a 5.7" HD+ display, Snapdragon 632, 13MP rear camera, and 3000mAh battery.', 5, 1, 'https://top10smartfonov.ru/wp-content/uploads/2019/06/main_1_4.jpg', 15699),
 ('S99', 'PS4', 'The PS4 is a gaming console with a powerful processor, 8GB RAM, 500GB/1TB storage, Blu-ray drive, and supports HDR gaming and streaming services.', 3, 3, 'no_image', 35000),
-('S56', 'Bravia 55', 'The Sony Bravia 55 is a 4K UHD smart TV with HDR, vivid color, sharp clarity, and built-in streaming apps for an immersive viewing experience.', 3, 2, 'https://intercompras.com/product_thumb_keepratio_2.php?img=images/product/SONY_KDL-55W950A.jpg&w=650&h=450', 49500),
+('S56', 'Bravia 55', 'The Sony Bravia 55 is a 4K UHD smart TV with HDR, vivid color, sharp clarity, and built-in streaming apps for an immersive viewing experience.', 3, 2, 'https://th.bing.com/th/id/OIP.AZjQF0olRpYRrP98U2T2TgHaHa?rs=1&pid=ImgDetMain', 49500),
 ('A23', 'Apple TV', 'The Apple TV is a streaming device with 4K HDR support, Siri voice control, access to apps, games, and seamless integration with Apple services.', 2, 3, 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/rfb-apple-tv-4k?wid=1144&hei=1144&fmt=jpeg&qlt=80&.v=1513897159574', 7850)
 select * from ARTICULOS
