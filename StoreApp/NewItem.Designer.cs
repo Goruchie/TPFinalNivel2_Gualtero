@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewItem));
             this.lblCode = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.lblDescription = new System.Windows.Forms.Label();
@@ -132,6 +133,7 @@
             // txtCode
             // 
             this.txtCode.Location = new System.Drawing.Point(117, 49);
+            this.txtCode.MaxLength = 50;
             this.txtCode.Name = "txtCode";
             this.txtCode.Size = new System.Drawing.Size(144, 20);
             this.txtCode.TabIndex = 9;
@@ -139,6 +141,7 @@
             // txtName
             // 
             this.txtName.Location = new System.Drawing.Point(117, 94);
+            this.txtName.MaxLength = 50;
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(144, 20);
             this.txtName.TabIndex = 10;
@@ -146,6 +149,7 @@
             // txtDescription
             // 
             this.txtDescription.Location = new System.Drawing.Point(117, 138);
+            this.txtDescription.MaxLength = 150;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(144, 20);
             this.txtDescription.TabIndex = 11;
@@ -153,6 +157,7 @@
             // txtUrlImage
             // 
             this.txtUrlImage.Location = new System.Drawing.Point(121, 275);
+            this.txtUrlImage.MaxLength = 1000;
             this.txtUrlImage.Name = "txtUrlImage";
             this.txtUrlImage.Size = new System.Drawing.Size(144, 20);
             this.txtUrlImage.TabIndex = 12;
@@ -161,6 +166,7 @@
             // txtPrice
             // 
             this.txtPrice.Location = new System.Drawing.Point(121, 316);
+            this.txtPrice.MaxLength = 10;
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.Size = new System.Drawing.Size(144, 20);
             this.txtPrice.TabIndex = 13;
@@ -216,6 +222,10 @@
             this.Controls.Add(this.lblDescription);
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.lblCode);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(651, 489);
+            this.MinimumSize = new System.Drawing.Size(651, 489);
             this.Name = "NewItem";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add new item";

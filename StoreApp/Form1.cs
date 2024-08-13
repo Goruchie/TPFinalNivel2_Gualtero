@@ -88,17 +88,35 @@ namespace StoreApp
 
         private void btnModify_Click(object sender, EventArgs e)
         {
+            try
+            {
             Item selected;
+                if (dgvStore.CurrentRow == null)
+                {
+                    MessageBox.Show("You must select an item to edit.");
+                    return;
+                }
             selected = (Item)dgvStore.CurrentRow.DataBoundItem;
             NewItem modify = new NewItem(selected);
-            modify.ShowDialog();
+            modify.ShowDialog();            
             load();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
             StoreServices service = new StoreServices();
             Item selected;
+            if (dgvStore.CurrentRow == null)
+            {
+                MessageBox.Show("You must select an item to delete.");
+                return;
+            }
             try
             {
                 DialogResult answer = MessageBox.Show("Are you sure you want to delete this item?", "Deleted", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
@@ -119,10 +137,23 @@ namespace StoreApp
         private void btbDetails_Click(object sender, EventArgs e)
         {
             Item selected;
+            if (dgvStore.CurrentRow == null)
+            {
+                MessageBox.Show("You must select an item to see details.");
+                return;
+            }
+            try
+            {
             selected = (Item)dgvStore.CurrentRow.DataBoundItem;
             Details details = new Details(selected);
             details.ShowDialog();
             load();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
         private void cboFilterBy_SelectedIndexChanged(object sender, EventArgs e)
@@ -144,12 +175,53 @@ namespace StoreApp
             }
         }
 
+        private bool onlyNumbers(string chain)
+        {
+            foreach (char character in chain)
+            {
+                if (!(char.IsNumber(character)))                
+                    return false;
+                
+            }
+            return true;
+        }
+
+        private bool validateFilter()
+        {
+            if (cboFilterBy.SelectedIndex < 0)
+            {
+                MessageBox.Show("You must select a filter option.");
+                return true;
+            }
+            if (cboCriteria.SelectedIndex < 0)
+            {
+                MessageBox.Show("You must select a criteria option.");
+                return true;
+            }
+            if (cboFilterBy.SelectedItem.ToString() == "Price")
+            {
+                if (txtSearch.Text == "")
+                {
+                    MessageBox.Show("You must enter a number to filter.");
+                    return true;
+                }
+                if (!onlyNumbers(txtSearch.Text))
+                {
+                    MessageBox.Show("You must enter numbers for this field.");
+                    return true;
+                }
+               
+            }
+            return false;
+        }
+
         private void btnSearch_Click(object sender, EventArgs e)
         {
             StoreServices service = new StoreServices();
             try
             {
-                
+                if (validateFilter())
+                    return;
                 string filterBy = cboFilterBy.SelectedItem.ToString();
                 string criteria = cboCriteria.SelectedItem.ToString();
                 string search = txtSearch.Text;
