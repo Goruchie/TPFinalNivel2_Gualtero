@@ -201,7 +201,7 @@
             this.MinimumSize = new System.Drawing.Size(935, 473);
             this.Name = "frmStore";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Store App";
+            this.Text = "WinStore";
             this.Load += new System.EventHandler(this.frmStore_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvStore)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxItem)).EndInit();

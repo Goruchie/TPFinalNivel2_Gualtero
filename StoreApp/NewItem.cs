@@ -27,7 +27,7 @@ namespace StoreApp
         {
             InitializeComponent();
             this.item = item;
-            Text = "Modify Item";
+            Text = "Edit Item";
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -159,7 +159,7 @@ namespace StoreApp
                 if (item.Id != 0)
                 {
                     service.modify(item);
-                    MessageBox.Show("Item modified");
+                    MessageBox.Show("Item edited");
                 }
                 else
                 {

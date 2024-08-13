@@ -93,7 +93,7 @@ namespace StoreApp
             Item selected;
                 if (dgvStore.CurrentRow == null)
                 {
-                    MessageBox.Show("You must select an item to modify.");
+                    MessageBox.Show("You must select an item to edit.");
                     return;
                 }
             selected = (Item)dgvStore.CurrentRow.DataBoundItem;
