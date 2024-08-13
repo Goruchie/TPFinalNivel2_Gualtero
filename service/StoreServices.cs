@@ -124,56 +124,53 @@ namespace service
             try
             {
                 string query = "select Codigo, Nombre, A.Descripcion Descripcion, M.Descripcion Marca, C.Descripcion Categoria, ImagenUrl, Precio, A.Id, A.IdMarca, A.IdCategoria from ARTICULOS A, MARCAS M, CATEGORIAS C Where M.Id = A.IdMarca And C.Id = A.IdCategoria And ";
-                switch (filterBy)
+                if (filterBy == "Price")
                 {
-                    case "Price":
-                        switch (criteria)
-                        {
-                            case "Bigger than":
-                                query += "Precio > " + search;
-                                break;
-                            case "Less than":
-                                query += "Precio < " + search;
-                                break;
-                            default:
-                                query += "Precio = " + search;
-                                break;                        
-                        }
-                        break;
-
-                    case "Code":
-                        switch(criteria)
-                        {
-                            case "Starts with":
-                                query += "Codigo like '" + search + "%' ";
-                                break;
-                            case "Ends with":
-                                query += "Codigo like '%" + search + "'";
-                                break;
-                            default:
-                                query += "Codigo like '%" + search + "%'";
-                                break;
-                        }
-                        break;
-
-                    case "Name":
-                        switch (criteria)
-                        {
-                            case "Starts with":
-                                query += "Nombre like '" + search + "%' ";
-                                break;
-                            case "Ends with":
-                                query += "Nombre like '%" + search + "'";
-                                break;
-                            default:
-                                query += "Nombre like '%" + search + "%'";
-                                break;
-                        }
-                        break;
-
-                    default:
-                        break;
+                    switch (criteria)
+                    {
+                        case "Less than":
+                            query += "Precio < " + search;
+                            break;
+                        case "Greater than":
+                            query += "Precio > " + search;
+                            break;
+                        default:
+                            query += "Precio = " + search;
+                            break;
+                    }
                 }
+
+                else if (filterBy == "Code")
+                {
+                    switch (criteria)
+                    {
+                        case "Starts with":
+                            query += "Codigo like '" + search + "%' ";
+                            break;
+                        case "Ends with":
+                            query += "Codigo like '%" + search + "'";
+                            break;
+                        default:
+                            query += "Codigo like '%" + search + "%'";
+                            break;
+                    }
+                }
+                else
+                {
+                    switch (criteria)
+                    {
+                        case "Starts with":
+                            query += "Nombre like '" + search + "%' ";
+                            break;
+                        case "Ends with":
+                            query += "Nombre like '%" + search + "'";
+                            break;
+                        default:
+                            query += "Nombre like '%" + search + "%'";
+                            break;
+                    }
+                }
+                
                 data.setQuery(query);
                 data.runReader();
                 while (data.Reader.Read())

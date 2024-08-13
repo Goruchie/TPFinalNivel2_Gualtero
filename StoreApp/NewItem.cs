@@ -11,6 +11,7 @@ using System.Xml.Linq;
 using domain;
 using service;
 using System.Configuration;
+using System.Diagnostics;
 
 namespace StoreApp
 {
@@ -91,11 +92,57 @@ namespace StoreApp
             loadImage(txtUrlImage.Text);
         }
 
+        private bool onlyNumbers(string chain)
+        {
+            foreach (char character in chain)
+            {
+                if (!(char.IsNumber(character)))
+                    return false;
+
+            }
+            return true;            
+        }
+
+
+        private bool validateFilter()
+        {
+            if (!onlyNumbers(txtPrice.Text))
+            {
+                MessageBox.Show("The price must be a number");
+                return true;
+            }
+            if (txtCode.Text == "")
+            {
+                MessageBox.Show("You must enter a code.");
+                return true;
+            }                       
+            if (txtName.Text == "")
+            {
+                MessageBox.Show("You must enter a name.");
+                return true;
+            }
+            if (txtDescription.Text == "")
+            {
+                MessageBox.Show("You must enter a description.");
+                return true;
+            }
+            if (txtPrice.Text == "")
+            {
+                MessageBox.Show("You must enter a price.");
+                return true;
+            }
+
+
+            return false;
+        }
+
         private void btnAccept_Click(object sender, EventArgs e)
         {
             StoreServices service = new StoreServices();
             try
             {
+                if (validateFilter())
+                    return;
                 if (item == null)
                     item = new Item();
 
@@ -105,7 +152,7 @@ namespace StoreApp
                 item.Brand = (Brand)cboBrand.SelectedItem;
                 item.Category = (Category)cboCategory.SelectedItem;
                 item.UrlImage = txtUrlImage.Text;
-                item.Price = Convert.ToInt32(txtPrice.Text);
+                item.Price = Convert.ToInt32(txtPrice.Text);              
 
                 if (item.Id != 0)
                 {
