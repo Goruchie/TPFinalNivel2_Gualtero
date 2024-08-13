@@ -48,6 +48,7 @@ namespace StoreApp
                 cboCategory.DataSource = categoryServices.list();
                 cboCategory.ValueMember = "Id";
                 cboCategory.DisplayMember = "Description";
+                loadImage(txtUrlImage.Text);
 
                 if (item != null)
                 {
@@ -58,6 +59,7 @@ namespace StoreApp
                     cboCategory.SelectedValue = item.Category.Id;
                     txtUrlImage.Text = item.UrlImage;
                     txtPrice.Text = item.Price.ToString();
+                    loadImage(txtUrlImage.Text);
                 }
             }
             catch (Exception ex)
@@ -164,15 +166,12 @@ namespace StoreApp
                     service.add(item);
                     MessageBox.Show("Item added");
                 }
+                Close();
             }
             catch (Exception ex)
             {
 
                 MessageBox.Show(ex.ToString());
-            }
-            finally
-            {
-                Close();
             }
         }
     }
