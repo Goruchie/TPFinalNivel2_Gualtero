@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmStore));
             this.dgvStore = new System.Windows.Forms.DataGridView();
             this.pbxItem = new System.Windows.Forms.PictureBox();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -48,6 +49,7 @@
             // dgvStore
             // 
             this.dgvStore.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvStore.BackgroundColor = System.Drawing.Color.LightSteelBlue;
             this.dgvStore.ColumnHeadersHeight = 50;
             this.dgvStore.Location = new System.Drawing.Point(12, 30);
             this.dgvStore.MultiSelect = false;
@@ -133,7 +135,7 @@
             // lblCriteria
             // 
             this.lblCriteria.AutoSize = true;
-            this.lblCriteria.Location = new System.Drawing.Point(197, 400);
+            this.lblCriteria.Location = new System.Drawing.Point(208, 399);
             this.lblCriteria.Name = "lblCriteria";
             this.lblCriteria.Size = new System.Drawing.Size(42, 13);
             this.lblCriteria.TabIndex = 8;
@@ -143,7 +145,7 @@
             // 
             this.cboCriteria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCriteria.FormattingEnabled = true;
-            this.cboCriteria.Location = new System.Drawing.Point(245, 396);
+            this.cboCriteria.Location = new System.Drawing.Point(256, 395);
             this.cboCriteria.Name = "cboCriteria";
             this.cboCriteria.Size = new System.Drawing.Size(121, 21);
             this.cboCriteria.TabIndex = 9;
@@ -151,7 +153,7 @@
             // lblFilter
             // 
             this.lblFilter.AutoSize = true;
-            this.lblFilter.Location = new System.Drawing.Point(423, 400);
+            this.lblFilter.Location = new System.Drawing.Point(431, 400);
             this.lblFilter.Name = "lblFilter";
             this.lblFilter.Size = new System.Drawing.Size(32, 13);
             this.lblFilter.TabIndex = 10;
@@ -159,14 +161,14 @@
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(461, 396);
+            this.txtSearch.Location = new System.Drawing.Point(469, 396);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(100, 20);
             this.txtSearch.TabIndex = 11;
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(567, 395);
+            this.btnSearch.Location = new System.Drawing.Point(575, 395);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
             this.btnSearch.TabIndex = 12;
@@ -179,7 +181,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(919, 450);
+            this.ClientSize = new System.Drawing.Size(919, 434);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.lblFilter);
@@ -193,6 +195,10 @@
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.pbxItem);
             this.Controls.Add(this.dgvStore);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(935, 473);
+            this.MinimumSize = new System.Drawing.Size(935, 473);
             this.Name = "frmStore";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Store App";
