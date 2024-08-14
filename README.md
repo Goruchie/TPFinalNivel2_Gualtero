@@ -74,7 +74,7 @@ You need to have .NET 5, Visual Studio 2022, and SQL Server Management Studio
 
 Clone this repository to your desired folder:
 ```sh
-- git clone https://github.com/Goruchie/TPFinalNivel2_Gualtero.git
+- git clone https://github.com/Goruchie/WinStore.git
 - (You can also do it by cloning the repository from VS 2022)
 ```
 ### Install
@@ -115,7 +115,7 @@ In the future, I plan to make this app for Web and also mobile. Also, the stylin
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/Goruchie/TPFinalNivel2_Gualtero/issues).
+Feel free to check the [issues page](https://github.com/Goruchie/WinStore/issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -135,7 +135,7 @@ If you like this project, please leave star
 
 > Give credit to everyone who inspired your codebase.
 
-I would like to thank [Max Sar Fernández](https://github.com/msarfernandez) for teaching me C# and ADO.NET, without him, this App couldn't exist.
+I want to thank [Max Sar Fernández](https://github.com/msarfernandez) for teaching me C# and ADO.NET, without him, this App couldn't exist.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -146,7 +146,7 @@ I would like to thank [Max Sar Fernández](https://github.com/msarfernandez) for
 
 ## 📝 License <a name="license"></a>
 
-This project is [MIT](/LICENSE.txt) licensed.
+This project is licensed by [MIT](/LICENSE.txt).
 
 _NOTE: we recommend using the [MIT license](https://choosealicense.com/licenses/mit/) - you can set it up quickly by [using templates available on GitHub](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/adding-a-license-to-a-repository). You can also use [any other license](https://choosealicense.com/licenses/) if you wish._
 
