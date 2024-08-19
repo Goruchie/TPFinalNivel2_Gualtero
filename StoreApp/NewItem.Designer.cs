@@ -227,7 +227,7 @@
             this.MaximumSize = new System.Drawing.Size(651, 489);
             this.MinimumSize = new System.Drawing.Size(651, 489);
             this.Name = "NewItem";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Add new item";
             this.Load += new System.EventHandler(this.NewItem_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbxItem)).EndInit();
